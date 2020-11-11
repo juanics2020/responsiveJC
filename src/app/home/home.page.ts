@@ -27,6 +27,6 @@ export class HomePage {
     //Método get para coger el contenido de una dirección
     //Contenido del ARRAY RESULTS, reconduciendo con una tubería (pipe) todos los datos al map para que nos mapee sólo el contenido de results
     //Necesitamos importar map
-    this.companies = this.httpClient.get('https://github.com/juanics2020/responsiveJC.git/datos');
+    this.companies = this.httpClient.get('https://raw.githubusercontent.com/juanics2020/responsiveJC/master/datos/MOCK_DATA.json');
   }
 }

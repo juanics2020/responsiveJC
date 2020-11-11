@@ -1,20 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      PROVEEDORES
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- Mostrar rejilla con contactos, indicando filas y columnas-->
+  <ion-grid>
+    <!-- Filas -->
+    <ion-row>
+      <!-- Columnas(CELDAS) con bucle para que las celdas cojan cada uno de los proveedores -->
+      <!-- Bucle de Angular: *ngFor -->
+      <!-- En la variable companies del .ts están los proveedores -->
+      <!-- Declaramos la variable company que guardará cada una de los proveedores (las carga desde companies):
+         let company of companies. Al ser datos descargados de Internet debe hacerlo de forma asíncrona (según recibe los datos los va tratando)-->
+        <!-- número de columnas que queremos que se muestren, cuantas unidades de medida le damos a las columnas.
+        Vienen de 12 en 12. Le decimos que use tamaño extra grande (hay que decirle un divisor de 12, 12 es una única columna)
+        Size divide la pantalla en 12 trozos. Si le digo 6 (me divide 12/6 = 2 columnas)-->
+         <ion-col *ngFor="let company of companies | async" size-xl="2" size-lg="2" size-md="4" size-sm="6" size-xs="12">
+        <!-- Mostramos el proveedor -->
+        <ion-card>
+          <ioncard-content>
+            <!-- Mostramos la imagen del proveedor -->
+            <!-- en randomuser.me vemos el campo (logo) (hay 3 tamaños) cogemos el mediano-->
+            <!-- Poner la imagen como si fuera un Avatar(dentro de un círculo)-->
+            <ion-avatar>
+              <img [src]="company.logo">
+            </ion-avatar>          
+            <!-- Mostramos el nombre del proveedor como si fuera html (entre llaves dobles) -->
+            <h1>{{ company.company }}</h1>
+            <!-- Metemos un texto de contenido -->
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat vehicula semper. Vivamus porta lectus non justo vulputate fringilla eget ut ligula.
+          </ioncard-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
