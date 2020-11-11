@@ -10,8 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class HomePage {
 //Guardará los datos que nos van a llegar desde el documento json (contendrá las personas)
   //Va a ser de tipo OBJETO: any (tipo objeto)
-  companies: any; //en la variable users any estarían todos los contactos
-
+  companies: any = []; //en la variable companies any estarían todos los proveedores (array)
+  pagina: number = 1; // Variable UNIDIRECCIONAL (sólo se muestra)
+  filtro: string = "";//Variable para hacer búsqueda (debe coincidir) BIDIRECCIONAL
 
   //Librería para descargarnos desde internet algo (client http)
   //Lo ponemos en el constructor para que cuando arranque la aplicación se descargue
