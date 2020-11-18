@@ -14,7 +14,7 @@
   <ion-grid class="cuadricula">
     <!-- Filas -->
     <ion-row class="fila">
-      <div *ngFor="let company of companies | async">
+      <div *ngFor="let company of companies | async; let indice=index">
         <!-- Columnas(CELDAS) con bucle para que las celdas cojan cada uno de los proveedores -->
         <!-- Bucle de Angular: *ngFor -->
         <!-- En la variable companies del .ts están los proveedores -->
@@ -38,9 +38,11 @@
               <!-- Mostramos el nombre del proveedor como si fuera html (entre llaves dobles) -->
               <h1 class="proveedor">{{ company.company }}</h1>
               <h2 class="state">{{ company.state }}</h2>
-              <h4>{{ pagina }}</h4>
+              <h4 class="anio">{{ anio }}</h4>
+              <h4>{{indice+1}}</h4>
               <!-- Metemos un texto de contenido -->
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat vehicula semper. Vivamus porta lectus non justo vulputate fringilla eget ut ligula.
+              <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat vehicula semper. Vivamus porta lectus non justo vulputate fringilla eget ut ligula.</p>
+              
             </ioncard-content>
           </ion-card>
         </ion-col>

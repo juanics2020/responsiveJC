@@ -27,12 +27,111 @@
 }
 
 
+//ESTILOS FIJOS
+
 .cuadricula{
   background-color: #666666;
 }
 
 .logotipo{
   border-style: outset;
+}
+
+.proveedor, .state{
+  font-style: italic;
+}
+
+.cuadros{
+  border-style: solid;
+  border-color: white;
+  border-width: 2;
+}
+
+.state{
+  color: blue;
+}
+
+
+
+//ESTILOS VARIABLES Y VISIBLES/INVISIBLES SEGÚN VENTANA
+
+.cuadros{
+
+  @media screen and (min-width: 1px) and (max-width: 500px)  {    
+    --background: rgb(140, 184, 142);    
+  }
+
+  @media screen and (min-width: 501px) and (max-width: 750px){
+    --background: rgb(148, 188, 214);
+  }
+
+  @media screen and (min-width: 751px) and (max-width: 2000px){
+    --background: rgb(190, 148, 199);
+  }
+}
+
+.proveedor{
+
+  @media screen and (min-width: 1px) and (max-width: 500px)  {    
+    font-size: small;   
+  }
+
+  @media screen and (min-width: 501px) and (max-width: 750px){
+    font-size: x-large; 
+  }
+
+  @media screen and (min-width: 751px) and (max-width: 2000px){
+    font-size: xx-large; 
+  }
+}
+
+.lorem, .state{
+
+  @media screen and (min-width: 1px) and (max-width: 500px)  {    
+    font-size: medium;   
+  }
+
+  @media screen and (min-width: 501px) and (max-width: 750px){
+    font-size: large; 
+  }
+
+  @media screen and (min-width: 751px) and (max-width: 2000px){
+    font-size: x-large; 
+  }
+}
+
+
+
+@media screen and (orientation: portrait){
+
+  .proveedor, .anio {
+    color: white;
+  }
+
+  .lorem {
+    display: none; //Hacerlo invisible
+  }
+  .anio {
+    display: block; //Hacerlo visible
+    background-color: #d7c2ffa9;
+  }
+
+}
+
+@media screen and (orientation: landscape){
+
+  .proveedor, .anio {
+    color: black;
+  }
+
+  .anio {
+    display: none; //Hacerlo invisible
+  }
+
+  .lorem {
+    display: block; //Hacerlo visible
+    background-color: #d7c2ffa9;
+  }
 }
 
 

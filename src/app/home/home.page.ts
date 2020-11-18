@@ -11,7 +11,7 @@ export class HomePage {
 //Guardará los datos que nos van a llegar desde el documento json (contendrá las personas)
   //Va a ser de tipo OBJETO: any (tipo objeto)
   companies: any = []; //en la variable companies any estarían todos los proveedores (array)
-  pagina: number = 1; // Variable UNIDIRECCIONAL (sólo se muestra)
+  anio: number = 2020; // Variable UNIDIRECCIONAL (sólo se muestra)
   filtro: string = "";//Variable para hacer búsqueda (debe coincidir) BIDIRECCIONAL
 
   //Librería para descargarnos desde internet algo (client http)
@@ -21,7 +21,7 @@ export class HomePage {
   Hay que importarla porque no la coge directamente */
   /* OJO!!! HttpClient debe ser un PROVEEDOR de datos para la aplicación: en "hom.moduel.ts"*/
 
-
+  
   constructor(private httpClient: HttpClient) {
     /*Le decimos que guarde en la variable que hemos creado todo el contenido de el
     documento de internet (personas) */
@@ -30,4 +30,5 @@ export class HomePage {
     //Necesitamos importar map
     this.companies = this.httpClient.get('https://raw.githubusercontent.com/juanics2020/responsiveJC/master/datos/MOCK_DATA.json');
   }
+
 }
