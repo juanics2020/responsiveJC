@@ -14,7 +14,7 @@
   <ion-grid class="cuadricula">
     <!-- Filas -->
     <ion-row class="fila">
-      <div *ngFor="let company of companies | async; let indice=index">
+      <ng-container *ngFor="let company of companies | async; let indice=index">
         <!-- Columnas(CELDAS) con bucle para que las celdas cojan cada uno de los proveedores -->
         <!-- Bucle de Angular: *ngFor -->
         <!-- En la variable companies del .ts están los proveedores -->
@@ -25,7 +25,7 @@
         Size divide la pantalla en 12 trozos. Si le digo 6 (me divide 12/6 = 2 columnas)-->
          <!-- Si el imput se queda vacío mostrará todos los registros.
           Si el estado coincide con el input, mostrará sólo los de ese estado-->
-        <ion-col class="columna" *ngIf="filtro == '' || company.state == filtro" size-xl="2" size-lg="2" size-md="4" size-sm="6" size-xs="12">
+        <ion-col class="columna" *ngIf="filtro == '' || company.state.includes(filtro)" size-xl="2" size-lg="2" size-md="4" size-sm="6" size-xs="12">
           <!-- Mostramos el proveedor -->
           <ion-card class="cuadros">
             <ioncard-content>
@@ -41,12 +41,12 @@
               <h4 class="anio">{{ anio }}</h4>
               <h4>{{indice+1}}</h4>
               <!-- Metemos un texto de contenido -->
-              <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat vehicula semper. Vivamus porta lectus non justo vulputate fringilla eget ut ligula.</p>
+              <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat vehicula semper.</p>
               
             </ioncard-content>
           </ion-card>
         </ion-col>
-      </div>
+      </ng-container>
     </ion-row>
   </ion-grid>
 </ion-content>
