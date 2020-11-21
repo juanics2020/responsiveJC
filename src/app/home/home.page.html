@@ -1,16 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      PROVEEDORES
+      <strong>
+        PROVEEDORES
+      </strong>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- Mostrar rejilla con contactos, indicando filas y columnas-->
+
+  <!-- Añadimos una lista desplegable para que el usuario elija por qué campo quiere buscar (Nombre de la compañía(Proveedor),
+    Estado al que pertenece, por el Índice de la tarjeta). La variable campo tomará sus valores de aquí (p,e,i)-->
+  <ion-item>
+    <ion-label><B>Campo de Búsqueda</B></ion-label>
+    <ion-select [(ngModel)]="campo" placeholder="Selecciona Campo de Búsqueda">
+      <ion-select-option value="p">Proveedor</ion-select-option>
+      <ion-select-option value="e">Estado</ion-select-option>
+      <ion-select-option value="i">Indice</ion-select-option>
+    </ion-select>
+  </ion-item>
+
   <!-- Caja de text para hacer búsqueda.
-    DATABINDING de Angular (ngModel): Al input le asigno la variable filtro (del .ts) -->
-  <ion-input [(ngModel)] = "filtro" placeholder="Introduce la búsqueda"></ion-input>
+    DATABINDING de Angular (ngModel): Al input le asigno la variable filtro (del .ts) --> 
+    <!-- Meter icono de búsqueda dentor para que aparezca en la misma línea. Cogido de: https://ionicons.com/ -->
+  <ion-input [(ngModel)] = "filtro" placeholder="Introduce la búsqueda"> <ion-icon name="search-sharp" size = "large"></ion-icon> </ion-input>
+
+  <!-- Mostrar rejilla con contactos, indicando filas y columnas-->
   <ion-grid class="cuadricula">
     <!-- Filas -->
     <ion-row class="fila">
@@ -23,9 +39,14 @@
         <!-- número de columnas que queremos que se muestren, cuantas unidades de medida le damos a las columnas.
         Vienen de 12 en 12. Le decimos que use tamaño extra grande (hay que decirle un divisor de 12, 12 es una única columna)
         Size divide la pantalla en 12 trozos. Si le digo 6 (me divide 12/6 = 2 columnas)-->
-         <!-- Si el imput se queda vacío mostrará todos los registros.
-          Si el estado coincide con el input, mostrará sólo los de ese estado-->
-        <ion-col class="columna" *ngIf="filtro == '' || company.state.includes(filtro)" size-xl="2" size-lg="2" size-md="4" size-sm="6" size-xs="12">
+         <!-- Si el input se queda vacío mostrará todos los registros. Dependiendo el campo de búsqueda elegido,
+          si la company, state, o indice coinciden con la búsqueda, los mostrará -->
+
+        <ion-col class="columna"
+        *ngIf= "filtro == '' ||
+        ( (campo == 'p' && company.company.includes(filtro)) || (campo == 'e' && company.state.includes(filtro)) || (campo == 'i' && indice+1 == (filtro)) )"
+         size-xl="2" size-lg="2" size-md="4" size-sm="6" size-xs="12">
+
           <!-- Mostramos el proveedor -->
           <ion-card class="cuadros">
             <ioncard-content>
@@ -39,7 +60,7 @@
               <h1 class="proveedor">{{ company.company }}</h1>
               <h2 class="state">{{ company.state }}</h2>
               <h4 class="anio">{{ anio }}</h4>
-              <h4>{{indice+1}}</h4>
+              <h4>{{ indice+1 }}</h4>
               <!-- Metemos un texto de contenido -->
               <p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat vehicula semper.</p>
               

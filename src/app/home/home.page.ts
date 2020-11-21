@@ -13,6 +13,7 @@ export class HomePage {
   companies: any = []; //en la variable companies any estarían todos los proveedores (array)
   anio: number = 2020; // Variable UNIDIRECCIONAL (sólo se muestra)
   filtro: string = "";//Variable para hacer búsqueda (debe coincidir) BIDIRECCIONAL
+  campo: string; //Variable para guardar campo de búsqueda (ion-select) ("p", "e", "i")
 
   //Librería para descargarnos desde internet algo (client http)
   //Lo ponemos en el constructor para que cuando arranque la aplicación se descargue
@@ -20,7 +21,6 @@ export class HomePage {
   /*Creamos una variable httpClient: objeto de la clase HttpClient.
   Hay que importarla porque no la coge directamente */
   /* OJO!!! HttpClient debe ser un PROVEEDOR de datos para la aplicación: en "hom.moduel.ts"*/
-
   
   constructor(private httpClient: HttpClient) {
     /*Le decimos que guarde en la variable que hemos creado todo el contenido de el
